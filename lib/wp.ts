@@ -1,7 +1,7 @@
 // lib/wp.ts
 import { GraphQLClient } from 'graphql-request';
 import { GET_FEATURED_PRODUCTS } from './queries';
-import type { ProductCardData } from '@/components/ProductCard';
+import { ProductCardData } from './types';
 
 type ProductNode = {
   id: string;
