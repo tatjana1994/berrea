@@ -4,6 +4,7 @@ import './globals.css';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import { CartProvider } from '@/components/cart/CartProvider';
+import SideCart from '@/components/cart/SideCart';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body className={`${playfair.variable} ${inter.variable} antialiased`}>
         <CartProvider>
           <Header />
-
+          <SideCart />
           {children}
 
           <Footer />

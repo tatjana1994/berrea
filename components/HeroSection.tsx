@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function HeroSection() {
   return (
-    <section className='relative min-h-[90vh] flex items-center overflow-hidden'>
+    <section className='relative mt-20 min-h-[90vh] flex items-center overflow-hidden'>
       <Image
         src='/herobg.png'
         alt='BERRÉA hero background'

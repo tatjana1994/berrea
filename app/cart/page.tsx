@@ -3,7 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/components/cart/CartProvider';
-import { formatMoney } from '@/lib/cartUtils';
+import { formatRsdPrice } from '@/lib/cartUtils';
+import { X } from 'lucide-react';
+import { formatPrice } from '@/lib/formatPrice';
 
 export default function CartPage() {
   const { items, subtotal, count, setQty, remove, clear } = useCart();
@@ -27,7 +29,7 @@ export default function CartPage() {
           {items.length > 0 && (
             <button
               onClick={clear}
-              className='text-xs uppercase tracking-[0.18em] text-[#1C1C1C]/70 hover:text-[#1C1C1C]'
+              className='cursor-pointer text-xs uppercase tracking-[0.18em] text-[#1C1C1C]/70 hover:text-[#1C1C1C]'
             >
               Clear cart
             </button>
@@ -73,15 +75,15 @@ export default function CartPage() {
                           {product.name}
                         </Link>
                         <p className='mt-2 text-sm text-[#2A2A2A]/80'>
-                          {product.price ?? '—'}
+                          {formatPrice(product.price ?? '—')}
                         </p>
                       </div>
 
                       <button
                         onClick={() => remove(product.id)}
-                        className='text-xs uppercase tracking-[0.18em] text-[#1C1C1C]/60 hover:text-[#1C1C1C]'
+                        className='text-xs cursor-pointer uppercase tracking-[0.18em] text-[#1C1C1C]/60 hover:text-[#1C1C1C]'
                       >
-                        Remove
+                        <X width={16} height={16} />
                       </button>
                     </div>
 
@@ -89,7 +91,7 @@ export default function CartPage() {
                       <div className='inline-flex items-center rounded-full border border-[#1C1C1C]/15'>
                         <button
                           onClick={() => setQty(product.id, qty - 1)}
-                          className='px-4 py-2 text-sm'
+                          className='px-4 py-2 text-sm cursor-pointer'
                           aria-label='Decrease quantity'
                         >
                           −
@@ -97,7 +99,7 @@ export default function CartPage() {
                         <span className='px-3 text-sm'>{qty}</span>
                         <button
                           onClick={() => setQty(product.id, qty + 1)}
-                          className='px-4 py-2 text-sm'
+                          className='px-4 py-2 text-sm cursor-pointer'
                           aria-label='Increase quantity'
                         >
                           +
@@ -116,8 +118,8 @@ export default function CartPage() {
 
               <div className='mt-6 flex items-center justify-between'>
                 <span className='text-sm text-[#2A2A2A]/80'>Subtotal</span>
-                <span className='text-sm text-[#1C1C1C]'>
-                  {formatMoney(subtotal)}
+                <span className='text-lg text-[#1C1C1C]'>
+                  {formatRsdPrice(subtotal)}
                 </span>
               </div>
 
@@ -133,13 +135,16 @@ export default function CartPage() {
               <div className='mt-6 flex items-center justify-between'>
                 <span className='text-sm text-[#2A2A2A]/80'>Total</span>
                 <span className='text-lg text-[#1C1C1C]'>
-                  {formatMoney(subtotal)}
+                  {formatRsdPrice(subtotal)}
                 </span>
               </div>
 
-              <button className='mt-8 inline-flex w-full items-center justify-center rounded-full bg-[#1C1C1C] px-8 py-4 text-xs uppercase tracking-[0.18em] text-white transition hover:opacity-90'>
+              <a
+                href='/checkout'
+                className='cursor-pointer mt-8 inline-flex w-full items-center justify-center rounded-full bg-[#1C1C1C] px-8 py-4 text-xs uppercase tracking-[0.18em] text-white transition hover:opacity-90'
+              >
                 Checkout
-              </button>
+              </a>
 
               <Link
                 href='/shop'

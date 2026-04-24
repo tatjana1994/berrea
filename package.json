@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "graphql-request": "^7.4.0",
+    "he": "^1.2.0",
     "keen-slider": "^6.8.6",
     "lucide-react": "^0.575.0",
     "next": "16.1.6",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/he": "^1.2.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

@@ -26,3 +26,12 @@ h2,
 h3 {
   font-family: var(--font-heading);
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

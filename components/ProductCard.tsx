@@ -1,19 +1,8 @@
 'use client';
 import { formatPrice } from '@/lib/formatPrice';
+import { ProductCardData } from '@/lib/types';
 import Image from 'next/image';
 import Link from 'next/link';
-
-export type ProductCardData = {
-  id: string;
-  slug: string;
-  name: string;
-  price?: string | null;
-  description?: string | null;
-  image?: {
-    sourceUrl: string;
-    altText?: string | null;
-  } | null;
-};
 
 type ProductCardProps = {
   product: ProductCardData;

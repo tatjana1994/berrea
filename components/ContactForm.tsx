@@ -49,7 +49,7 @@ export default function ContactForm() {
           label='Email'
           value={form.email}
           onChange={(v) => setForm((p) => ({ ...p, email: v }))}
-          placeholder='you@email.com'
+          placeholder='Your email'
           type='email'
         />
       </div>

@@ -42,28 +42,47 @@ export const GET_ALL_PRODUCTS = gql`
         slug
         name
         description
+
         image {
           sourceUrl
           altText
         }
 
+        productCategories {
+          nodes {
+            id
+            name
+            slug
+          }
+        }
+
         ... on SimpleProduct {
           price
+          regularPrice
+          salePrice
         }
+
         ... on VariableProduct {
           price
+          regularPrice
+          salePrice
         }
+
         ... on ExternalProduct {
           price
+          regularPrice
+          salePrice
         }
+
         ... on GroupProduct {
           price
+          regularPrice
+          salePrice
         }
       }
     }
   }
 `;
-
 export const GET_PRODUCT_BY_SLUG = gql`
   query GetProductBySlug($slug: ID!) {
     product(id: $slug, idType: SLUG) {

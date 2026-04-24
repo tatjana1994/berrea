@@ -1,4 +1,5 @@
-import ProductCard, { ProductCardData } from '@/components/ProductCard';
+import ProductCard from '@/components/ProductCard';
+import { ProductCardData } from '@/lib/types';
 
 type FeaturedProductsSectionProps = {
   title?: string;
