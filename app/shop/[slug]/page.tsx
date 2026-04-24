@@ -5,6 +5,7 @@ import { getWpClient } from '@/lib/wp';
 import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_SLUG } from '@/lib/queries';
 import { formatPrice } from '@/lib/formatPrice';
 import type { AllProductsResponse } from '@/lib/types';
+import AddToCartButton from '@/components/AddToCartButton';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -121,12 +122,15 @@ export default async function ProductPage({ params }: PageProps) {
             <p className='mt-6 text-lg text-[#1C1C1C]'>{displayPrice}</p>
 
             <div className='mt-10 flex flex-col gap-3 sm:flex-row'>
-              <button
-                type='button'
-                className='inline-flex cursor-pointer w-full items-center justify-center rounded-full bg-[#1C1C1C] px-8 py-4 text-xs uppercase tracking-[0.18em] text-white transition hover:opacity-90 sm:w-auto'
-              >
-                Add to cart
-              </button>
+              <AddToCartButton
+                product={{
+                  id: product.id,
+                  slug: product.slug,
+                  name: product.name,
+                  price: product.price,
+                  image: product.image,
+                }}
+              />
 
               <Link
                 href='/shop'
