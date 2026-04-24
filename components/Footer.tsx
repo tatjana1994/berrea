@@ -30,16 +30,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <a
-                  href='https://instagram.com'
-                  target='_blank'
-                  rel='noreferrer'
-                  className='hover:opacity-80 transition'
-                >
-                  Instagram
-                </a>
-              </li>
-              <li>
                 <Link href='/contact' className='hover:opacity-80 transition'>
                   Contact
                 </Link>
