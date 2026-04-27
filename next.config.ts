@@ -4,8 +4,20 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
+        protocol: 'https',
+        hostname: 'lure-fracture-sustainer.ngrok-free.dev',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'localhost',
+        port: '10003',
+        pathname: '/**',
+      },
+      {
         protocol: 'http',
-        hostname: 'testapp.local',
+        hostname: 'localhost',
+        port: '10003',
         pathname: '/**',
       },
     ],

@@ -6,6 +6,7 @@ import { GET_ALL_PRODUCTS, GET_PRODUCT_BY_SLUG } from '@/lib/queries';
 import { formatPrice } from '@/lib/formatPrice';
 import type { AllProductsResponse } from '@/lib/types';
 import AddToCartButton from '@/components/AddToCartButton';
+import { productImages } from '@/lib/productImages';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -94,20 +95,14 @@ export default async function ProductPage({ params }: PageProps) {
 
         <div className='mt-10 grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16'>
           <div className='relative w-full'>
-            {product.image?.sourceUrl ? (
-              <Image
-                src={product.image.sourceUrl}
-                alt={product.image.altText ?? product.name}
-                width={400}
-                height={400}
-                priority
-                className='object-contain rounded-3xl'
-              />
-            ) : (
-              <div className='absolute inset-0 flex items-center justify-center text-sm text-[#2A2A2A]/60'>
-                No image
-              </div>
-            )}
+            <Image
+              src={productImages[product.slug] || '/placeholder.png'}
+              alt='product image'
+              width={400}
+              height={400}
+              priority
+              className='object-contain rounded-3xl'
+            />
           </div>
 
           <div className='flex flex-col'>

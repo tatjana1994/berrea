@@ -6,6 +6,7 @@ import { useCart } from '@/components/cart/CartProvider';
 import { formatRsdPrice } from '@/lib/cartUtils';
 import { X } from 'lucide-react';
 import { formatPrice } from '@/lib/formatPrice';
+import { productImages } from '@/lib/productImages';
 
 export default function CartPage() {
   const { items, subtotal, count, setQty, remove, clear } = useCart();
@@ -57,8 +58,8 @@ export default function CartPage() {
                   <div className='relative h-28 w-24 overflow-hidden rounded-xl bg-[#F6F2EC]'>
                     {product.image?.sourceUrl ? (
                       <Image
-                        src={product.image.sourceUrl}
-                        alt={product.image.altText ?? product.name}
+                        src={productImages[product.slug] || '/placeholder.png'}
+                        alt='product image'
                         fill
                         className='object-cover'
                       />

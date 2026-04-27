@@ -105,7 +105,7 @@ export default async function Shop({
             />
           </aside>
 
-          <section className='lg:max-h-[calc(100vh-120px)] lg:overflow-y-auto lg:pr-2 scrollbar-hide'>
+          <section className='lg:max-h-[calc(100vh-80px)] lg:overflow-y-auto lg:pr-2 scrollbar-hide'>
             {' '}
             <div className='mb-6 flex items-center justify-between'>
               <p className='text-sm text-[#2A2A2A]/70'>

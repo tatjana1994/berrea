@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useCart } from '@/components/cart/CartProvider';
 import { formatRsdPrice } from '@/lib/cartUtils';
 import { formatPrice } from '@/lib/formatPrice';
+import { productImages } from '@/lib/productImages';
 
 export default function CheckoutClient() {
   const router = useRouter();
@@ -157,14 +158,12 @@ export default function CheckoutClient() {
               {items.map(({ product, qty }) => (
                 <div key={product.id} className='flex gap-4'>
                   <div className='relative h-20 w-16 shrink-0 overflow-hidden rounded-xl bg-[#F6F2EC]'>
-                    {product.image?.sourceUrl ? (
-                      <Image
-                        src={product.image.sourceUrl}
-                        alt={product.image.altText ?? product.name}
-                        fill
-                        className='object-cover'
-                      />
-                    ) : null}
+                    <Image
+                      src={productImages[product.slug] || '/placeholder.png'}
+                      alt='product image'
+                      fill
+                      className='object-cover'
+                    />
                   </div>
 
                   <div className='flex flex-1 justify-between gap-4'>

@@ -6,6 +6,7 @@ import { X } from 'lucide-react';
 import { useCart } from './CartProvider';
 import { formatRsdPrice } from '@/lib/cartUtils';
 import { formatPrice } from '@/lib/formatPrice';
+import { productImages } from '@/lib/productImages';
 
 export default function SideCart() {
   const {
@@ -96,14 +97,14 @@ export default function SideCart() {
                         onClick={closeCart}
                         className='relative h-24 w-20 shrink-0 cursor-pointer overflow-hidden rounded-xl bg-[#F6F2EC]'
                       >
-                        {product.image?.sourceUrl ? (
-                          <Image
-                            src={product.image.sourceUrl}
-                            alt={product.image.altText ?? product.name}
-                            fill
-                            className='object-cover'
-                          />
-                        ) : null}
+                        <Image
+                          src={
+                            productImages[product.slug] || '/placeholder.png'
+                          }
+                          alt='product image'
+                          fill
+                          className='object-cover'
+                        />
                       </Link>
 
                       <div className='flex flex-1 flex-col'>

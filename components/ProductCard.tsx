@@ -1,5 +1,6 @@
 'use client';
 import { formatPrice } from '@/lib/formatPrice';
+import { productImages } from '@/lib/productImages';
 import { ProductCardData } from '@/lib/types';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,18 +26,12 @@ export default function ProductCard({
       <Link href={`/shop/${product.slug}`} className='block flex-grow'>
         {' '}
         <div className='relative aspect-[4/5] w-full overflow-hidden rounded-2xl bg-white'>
-          {product.image?.sourceUrl ? (
-            <Image
-              src={product.image.sourceUrl}
-              alt={product.image.altText ?? product.name}
-              fill
-              className='object-cover transition-transform duration-300 group-hover:scale-[1.03]'
-            />
-          ) : (
-            <div className='absolute inset-0 flex items-center justify-center text-sm text-[#2A2A2A]/60'>
-              No image
-            </div>
-          )}
+          <Image
+            src={productImages[product.slug] || '/placeholder.png'}
+            alt='product image'
+            fill
+            className='object-cover transition-transform duration-300 group-hover:scale-[1.03]'
+          />
         </div>
         <div className='mt-5 space-y-2'>
           <h3 className='font-[var(--font-heading)] text-xl text-[#1C1C1C] leading-snug'>
